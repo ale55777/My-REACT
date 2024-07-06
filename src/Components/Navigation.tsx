@@ -7,7 +7,7 @@ const Navigation: React.FC = () => {
   return (
     <Row className="navigation-row" justify="space-between" align="middle">
       <Col className="logo" span={4}>
-       
+       <h1>Ali</h1>
         <img src="m.png" alt="Logo" style={{ height: '40px', marginLeft: '10px' }} />
       </Col>
       <Col className="icons" span={16}>
