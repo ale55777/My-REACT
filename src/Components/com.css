@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('a.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    height: 100vh; /* Make sure it covers the full height of the viewport */
+    width: 100%;
+    overflow: hidden; /* Prevents scrolling if the image size is larger than the viewport */
+}
+
+.navigation-row {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #1f1212;
+    padding: 20px 20px;
+    box-shadow: 0 2px 8px rgba(247, 7, 7, 0.1);
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    text-align: right;
+}
+
+.icon-button {
+    margin: 0 10px;
+}
+
+.navigation-input {
+    width: 200px;
+}
