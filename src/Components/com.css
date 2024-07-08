@@ -1,14 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url('a.jpg'); /* Replace with your image path */
-    background-size: cover; /* Ensure the image covers the entire page */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    height: 100vh; /* Make sure it covers the full height of the viewport */
-    width: 100%;
-    overflow: hidden; /* Prevents scrolling if the image size is larger than the viewport */
-}
+
 
 .navigation-row {
     position: fixed;
@@ -37,14 +27,8 @@ body {
     align-items: center;
 }
 
-.search {
-    text-align: right;
-}
 
 .icon-button {
     margin: 0 10px;
 }
 
-.navigation-input {
-    width: 200px;
-}
