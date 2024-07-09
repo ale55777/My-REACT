@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Input, Button } from 'antd';
-import { SearchOutlined, CloseOutlined, HomeOutlined, UserOutlined, BellOutlined } from '@ant-design/icons';
+import { HomeOutlined, UserOutlined, BellOutlined } from '@ant-design/icons';
 import './com.css';
 
 const Navigation: React.FC = () => {
@@ -15,13 +15,8 @@ const Navigation: React.FC = () => {
         <Button className="icon-button" type="primary" shape="circle" icon={<BellOutlined />} />
       </Col>
       <Col className="search" span={4}>
-        <Input
-          className="navigation-input"
-          placeholder="Search"
-          prefix={<SearchOutlined />}
-          suffix={<CloseOutlined />}
-        />
-      </Col>
+
+</Col>
     </Row>
   );
 }

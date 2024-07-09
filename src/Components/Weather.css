@@ -5,7 +5,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('k.jpeg');
+    background-color:white;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,7 +45,7 @@ html, body {
 
 .search-image {
     width: 25px;
-    height: 25px; /* size */
+    height: 25px; 
     cursor: pointer;
     margin-left: 10px;
 }
@@ -67,6 +67,8 @@ html, body {
     font-size: 80px;
     line-height: 1;
     margin: 0; 
+    transition: color 0.5s ease;
+    animation: infiniteColorChange 2s infinite;
 }
 
 .Location {
@@ -74,6 +76,20 @@ html, body {
     font-size: 40px;
     margin: 0; 
     margin-top: 10px; 
+    transition: color 0.5s ease;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+@keyframes infiniteColorChange {
+    0% {
+        color: #000000;
+    }
+    50% {
+        color: #ffffff;
+    }
+    100% {
+        color: #181515;
+    }
 }
 
 .FeelsLike,
@@ -90,6 +106,13 @@ html, body {
     width: 100%;
     color: #eadcdc;
     display: flex;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.weather-data:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #ffffff;
 }
 
 .weather-data .col {
@@ -97,4 +120,25 @@ html, body {
     align-items: flex-start;
     gap: 12px;
     font-size: 22px;
+    margin: 10px; 
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
+.weather-data .col:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+ }
+   
+    .black-button {
+        background-color: black;
+        color: rgb(19, 16, 16);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        color: White;
+      }
+      
+      .black-button:hover {
+        background-color: #f6f1f1;
+      }
