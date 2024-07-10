@@ -134,7 +134,7 @@ html, body {
         color: rgb(19, 16, 16);
         border: none;
         padding: 10px 20px;
-        border-radius: 50px;
+        border-radius: 30px 60px;
         cursor: pointer;
         color: White;
       }

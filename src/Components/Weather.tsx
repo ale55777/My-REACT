@@ -36,7 +36,7 @@ import Location from '../assets/loc.png';
 const Weather = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
-  const [backgroundImage, setBackgroundImage] = useState(ClearBG); // Set initial background image
+  const [backgroundImage, setBackgroundImage] = useState(ClearBG);
 
   const allIcons = {
     "01d": Sunn,
