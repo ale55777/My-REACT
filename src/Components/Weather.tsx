@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react';
-
-import{ Button }from"antd";
+import { useEffect, useState } from 'react';
+import { Button } from 'antd';
 import './Weather.css';
 
-
-
-
 import search_icon from '../assets/search_icon.png';
-
 import clear from '../assets/clear.png';
 import cloudy from '../assets/cloudy.gif';
 import drizzle from '../assets/storm.gif';
@@ -23,7 +18,7 @@ import Shower from '../assets/light shower.gif';
 import cloud from '../assets/cloud.png';
 import twocloud from '../assets/Scatt.png';
 //bg
-import ClearBG from '../assets/ClearBG.jpg'; 
+import ClearBG from '../assets/ClearBG.jpg';
 import CloudBG from '../assets/CloudBG.jpg';
 import StromBG from '../assets/StromBG.jpg';
 import LightBG from '../assets/LightBG.jpg';
@@ -32,56 +27,70 @@ import SnowBG from '../assets/SnowBG.jpg';
 import MistBG from '../assets/MistBG.jpg';
 import SunBG from '../assets/SunBG.jpg';
 import Solo from '../assets/OneCloudBG.jpg';
-import Location from '../assets/loc.png';
+
+type WeatherIconKey = "01d" | "01n" | "02d" | "02n" | "03d" | "03n" | "04d" | "04n" | "09d" | "09n" | "10d" | "10n" | "11d" | "11n" | "13d" | "13n" | "50d" | "50n";
+
+interface WeatherData {
+  humidity: number;
+  windSpeed: number;
+  temperature: number;
+  location: string;
+  feelsLike: number;
+  tempMin: number;
+  tempMax: number;
+  condition: string;
+  icon: string;
+}
+
+const allIcons: Record<WeatherIconKey, string> = {
+  "01d": Sunn,
+  "01n": Sunn,
+  "02d": cloud,
+  "02n": cloud,
+  "03d": cloudy,
+  "03n": cloudy,
+  "04d": twocloud,
+  "04n": twocloud,
+  "09d": Shower,
+  "09n": Shower,
+  "10d": rain,
+  "10n": rain,
+  "11d": drizzle,
+  "11n": drizzle,
+  "13d": snow,
+  "13n": snow,
+  "50d": Mist,
+  "50n": Mist,
+};
+
+const allBackgrounds: Record<WeatherIconKey, string> = {
+  "01d": SunBG,
+  "01n": SunBG,
+  "02d": Solo,
+  "02n": Solo,
+  "03d": CloudBG,
+  "03n": CloudBG,
+  "04d": ClearBG,
+  "04n": ClearBG,
+  "09d": LightBG,
+  "09n": LightBG,
+  "10d": RainBG,
+  "10n": RainBG,
+  "11d": StromBG,
+  "11n": StromBG,
+  "13d": SnowBG,
+  "13n": SnowBG,
+  "50d": MistBG,
+  "50n": MistBG,
+};
+
 const Weather = () => {
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState(null);
-  const [backgroundImage, setBackgroundImage] = useState(ClearBG);
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [backgroundImage, setBackgroundImage] = useState<string>(ClearBG);
 
-  const allIcons = {
-    "01d": Sunn,
-    "01n": Sunn,
-    "02d": cloud,
-    "02n": cloud,
-    "03d": cloudy,
-    "03n": cloudy,
-    "04d": twocloud,
-    "04n": twocloud,
-    "09d": Shower,
-    "09n": Shower,
-    "10d": rain,
-    "10n": rain,
-    "11d": drizzle,
-    "11n": drizzle,
-    "13d": snow,
-    "13n": snow,
-    "50n": Mist,
-    "50d": Mist,
-  };
-
-  const allBackgrounds = {
-    "01d": SunBG,
-    "01n": SunBG,
-    "02d": Solo,
-    "02n": Solo,
-    "03d": CloudBG,
-    "03n": CloudBG,
-    "04d": ClearBG,
-    "04n": ClearBG,
-    "09d": LightBG,
-    "09n": LightBG,
-    "10d": RainBG,
-    "10n": RainBG,
-    "11d": StromBG,
-    "11n": StromBG,
-    "13d": SnowBG,
-    "13n": SnowBG,
-    "50n": MistBG,
-    "50d": MistBG,
-  };
-
-  const search = async (location) => {
-    let url;
+  const search = async (location: string | { latitude: number; longitude: number }) => {
+    let url: string;
     if (typeof location === 'string') {
       if (location === '') {
         alert('Please Enter a City');
@@ -104,10 +113,10 @@ const Weather = () => {
 
       console.log(data);
 
-      const icon = allIcons[data.weather[0].icon] || clear;
-      const background = allBackgrounds[data.weather[0].icon] || ClearBG;
+      const icon = allIcons[data.weather[0].icon as WeatherIconKey] || clear;
+      const background = allBackgrounds[data.weather[0].icon as WeatherIconKey] || ClearBG;
 
-      const extractedData = {
+      const extractedData: WeatherData = {
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         temperature: Math.floor(data.main.temp - 273.15),
@@ -143,9 +152,9 @@ const Weather = () => {
         search({ latitude, longitude });
       }, (error) => {
         console.error(error);
-        alert(' Please try again.');
+        alert('Please try again.');
       });
-    } 
+    }
   };
 
   return (
@@ -163,7 +172,6 @@ const Weather = () => {
         backgroundRepeat: 'no-repeat',
       }}
     >
-       
       <div className="searching">
         <input
           type="text"
@@ -180,7 +188,7 @@ const Weather = () => {
       </div>
       <Button onClick={handleCurrentLocation} className='black-button'>
         Location
-        </Button>
+      </Button>
       {weatherData && (
         <>
           <img src={weatherData.icon} alt="weather" style={{ width: '200px', height: 'auto' }} />
@@ -205,21 +213,21 @@ const Weather = () => {
             <div className="col">
               <img src={low} alt="mintemp" style={{ width: '100px', height: 'auto' }} />
               <div>
-                <p>{weatherData.tempMin}%</p>
+                <p>{weatherData.tempMin}°C</p>
                 <span>Min-Temperature</span>
               </div>
             </div>
             <div className="col">
               <img src={high} alt="maxtemp" style={{ width: '100px', height: 'auto' }} />
               <div>
-                <p>{weatherData.tempMax}%</p>
+                <p>{weatherData.tempMax}°C</p>
                 <span>Max-Temperature</span>
               </div>
             </div>
             <div className="col">
               <img src={clear} alt="feels" style={{ width: '100px', height: 'auto' }} />
               <div>
-                <p>{weatherData.feelsLike}%</p>
+                <p>{weatherData.feelsLike}°C</p>
                 <span>Feels like</span>
               </div>
             </div>

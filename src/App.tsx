@@ -1,5 +1,5 @@
-import React from 'react'
- import Navigation from './Components/Navigation'
+
+import Navigation from './Components/Navigation'
  import Weather from './Components/Weather'
 import'./App.css'
 

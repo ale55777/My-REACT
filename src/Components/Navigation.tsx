@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Input, Button } from 'antd';
+import { Row, Col, Button } from 'antd';
 import { HomeOutlined, UserOutlined, BellOutlined } from '@ant-design/icons';
 import './com.css';
 
